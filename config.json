@@ -1,0 +1,10 @@
+{
+    "filterpump": [
+        {"on":"8:00","off":"9:00"},
+        {"on":"21:00", "off":"21:55"}
+    ],
+    "airpump": [
+        {"model":"Taurus", "doors":4},
+        {"model":"Escort", "doors":4}
+    ]
+}

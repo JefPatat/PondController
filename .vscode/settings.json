@@ -1,0 +1,7 @@
+{
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=RPi",
+        "--variable-naming-style=camelCase",
+        "--disable=C0111"
+    ]
+}
