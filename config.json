@@ -1,10 +1,25 @@
 {
-    "filterpump": [
-        {"on":"8:00","off":"9:00"},
-        {"on":"21:00", "off":"21:55"}
-    ],
-    "airpump": [
-        {"model":"Taurus", "doors":4},
-        {"model":"Escort", "doors":4}
+    "pumps":
+    [
+        {
+            "name": "Filter pump",
+            "pin": 17,
+            "pumpOnIntervals":[
+                {"enabled":true, "on":"8:00","off":"10:00"},
+                {"enabled":true, "on":"13:00","off":"15:00"},
+                {"enabled":true, "on":"19:00", "off":"21:00"},
+                {"enabled":false, "on":"00:00", "off":"00:00"}
+            ]
+        },
+        {
+            "name": "Air pump",
+            "pin": 18,
+            "pumpOnIntervals":[
+                {"enabled":true, "on":"12:00","off":"12:30"},
+                {"enabled":false, "on":"00:00", "off":"00:00"},
+                {"enabled":false, "on":"00:00", "off":"00:00"},
+                {"enabled":false, "on":"00:00", "off":"00:00"}
+            ]
+        }
     ]
 }

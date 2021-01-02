@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+   <title>Vijver dashboard</title>
+
+   <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+   <link rel="manifest" href="static/favicon/site.webmanifest">
+   <link rel="mask-icon" href="static/favicon/safari-pinned-tab.svg" color="#5bbad5">
+   <meta name="msapplication-TileColor" content="#da532c">
+   <meta name="theme-color" content="#35a9eb">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <style>
+      .disabled-button-background {background-color:lightgray;}
+      .disabled-button-text {color:black;}
+   </style>
+   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+ <!-- Popper JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 
+ <!-- Latest compiled JavaScript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+
+<body>
+    <i ></i>
+    <nav class="navbar navbar-expand bg-light"> 
+      <a class="navbar-brand" href="#">Vijver dashboard</a>
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item"> 
+              <a class="btn btn-primary" href="/"> 
+               <span class="fas fa-sync-alt"></span>
+              </a> 
+          </li>
+          <li class="nav-item" style=" margin-left: 10px;"> 
+            <a class="btn btn-primary" href="/settimes">
+             <span class="fas fa-cog"></span>
+            </a> 
+        </li>
+      </ul> 
+  </nav> 
+
+   <div class="container">
+
+   {% for pumpDescription in pumpDescriptions %}
+   {% if pumpDescription.State == true %}
+      <div class="row">
+         <div class="col-md-6" style="font-size: x-large">
+            <a href="/{{pumpDescription.Pin}}/off" class="btn btn-success">Zet uit</a>
+            {{ pumpDescription.Name }}
+         </div>
+      </div>
+   {% else %}
+      <div class="row">
+         <div class="col-md-6" style="font-size: x-large">
+            <a href="/{{pumpDescription.Pin}}/on" class="btn btn-secondary disabled-button-background disabled-button-text">Zet aan</a>
+            {{ pumpDescription.Name }}
+         </div>
+      </div>
+   {% endif %}
+   <a href="/{{pumpDescription.Pin}}/setOnIntervals" style="text-decoration: none; color:black">
+   <ul>
+      {% for onInterval in pumpDescription.OnIntervals %}
+         {% if onInterval.enabled == true %}
+         <li>
+         {{ onInterval.on }} - {{ onInterval.off}}
+         </li>
+         {% endif %}
+      {% endfor %}
+   </ul>
+   {% endfor %}
+   </a>
+</div>
+</body>
+</html>

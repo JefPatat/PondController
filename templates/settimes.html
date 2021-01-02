@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+   <title>Vijver dashboard</title>
+
+   <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+   <link rel="manifest" href="static/favicon/site.webmanifest">
+   <link rel="mask-icon" href="static/favicon/safari-pinned-tab.svg" color="#5bbad5">
+   <meta name="msapplication-TileColor" content="#da532c">
+   <meta name="theme-color" content="#35a9eb">
+   <style>
+      .disabled-button-background {background-color:lightgray;}
+      .disabled-button-text {color:black;}
+   </style>
+
+
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+ <!-- Popper JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 
+ <!-- Latest compiled JavaScript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   <script type="text/javascript">
+      function switchEnabled(inputId)
+      {
+         if($("#" + inputId).attr("disabled"))
+         {
+            $("#myBtn").removeAttr("disabled");
+            $('#myBtn').removeClass('disabled');
+         }
+         else
+         {
+            $("#" + inputId).attr("disabled", true);
+            $('#' + inputId).addClass('disabled');
+         }
+      }
+      </script>
+</head>
+
+<body>
+   <input type="button" class="btn btn-danger disaabled" disabled id="myBtn" value="Disabled Button" />
+<br>
+
+<input type="button" class="btn btn-danger " onclick="switchEnabled('time1')" id="myBtn" value="Enable Button" />
+    <h2 style = "text-align: center;">Wijzig tijden</h2>
+    <form action="/settimes" method="POST">
+      <label for="time1">Time 1:</label>
+      <input type="time" id="time1" name="time1">
+      <button type="submit" class="btn btn-primary">Bewaar</button>
+
+    </form>
+ </body>
+</html>
